@@ -1,0 +1,6 @@
+1.Mybatis
+自己手写一遍org.apache.ibatis.reflection下所有类的功能使用。
+特别是MetaObject.java,MetaClass.java，还有wrapper目录下的类。
+
+2.Mybatis 方法参数解析过程。
+

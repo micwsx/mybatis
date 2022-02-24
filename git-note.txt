@@ -1,0 +1,7 @@
+git@github.com:mybatis/mybatis-3.git
+
+https://github.com/mybatis/mybatis-3.git
+
+
+
+https://github.com/micwsx/mybatis.git

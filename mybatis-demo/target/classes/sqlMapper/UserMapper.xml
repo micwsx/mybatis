@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.example.dao.UserDao">
+
+    <parameterMap id="" type="">
+        <parameter property="" resultMap=""
+                   javaType="" jdbcType=""
+                   mode="" scale=""
+                   typeHandler=""></parameter>
+    </parameterMap>
+
+    <resultMap id="userModel" type="User">
+        <id column="id" property="id" javaType="java.lang.Integer"/>
+        <result column="name" javaType="java.lang.String" property="name"/>
+        <result column="address" javaType="java.lang.String" property="address"/>
+        <result column="age" javaType="java.lang.Integer" property="age"/>
+        <result column="birth_date" javaType="java.util.Date" property="birthDate"/>
+    </resultMap>
+
+    <select id="test" flushCache="true" useCache="true" resultOrdered="true"
+            resultMap="userModel"
+            parameterType="java.lang.Integer"
+            lang=""
+            parameterMap="" databaseId="" resultType="" fetchSize=""
+
+            resultSets=""
+            resultSetType="DEFAULT"
+            statementType="STATEMENT"
+            timeout="" >
+
+        select <include refid="col_list"/>
+        from user
+        where id = #{id}
+    </select>
+
+
+
+    <sql id="col_list" lang="" databaseId="">
+        id,name,address,age,birth_date
+    </sql>
+    <select id="getById" resultMap="userModel" parameterType="java.lang.Integer"  >
+        select <include refid="col_list"/>
+        from user
+        where id = #{id}
+    </select>
+
+    <select id="getByName" resultMap="userModel" parameterType="java.lang.String">
+        select <include refid="col_list"/>
+        from user
+        where name = #{name}
+    </select>
+
+
+    <select id="getAll" resultType="User">
+        select <include refid="col_list"/>
+        from user
+    </select>
+
+    <select id="getCriteria" resultType="User">
+        select <include refid="col_list"/>
+        from user
+        where name = #{name} and age >= #{age}
+    </select>
+
+    <insert id="add" parameterType="User" keyProperty="id" useGeneratedKeys="true">
+     <selectKey statementType="" resultType=""
+                databaseId="" keyProperty=""
+                keyColumn="" order=""></selectKey>
+        insert user(`name`,`address`,`age`,`birth_date`)
+        values(#{name,jdbcType=VARCHAR},#{address,jdbcType=VARCHAR},#{age,jdbcType=INTEGER},#{birthDate,jdbcType=DATE})
+    </insert>
+
+    <select id="test" >
+        select 1;
+    </select>
+    
+
+</mapper>
